@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -63,14 +63,13 @@ const items = [
     title: 'Error'
   }
 ];
-
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
   const location = useLocation();
-
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
+    // eslint-disable-next-line
   }, [location.pathname]);
 
   const content = (

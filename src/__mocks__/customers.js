@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-
+// eslint-disable-next-line
 export default [
   {
     id: uuid(),
