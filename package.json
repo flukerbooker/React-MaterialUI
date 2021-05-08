@@ -51,6 +51,8 @@
     "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "^4.0.0",
     "uuid": "^8.3.0",
+    "wavesurfer-react": "^2.0.7",
+    "wavesurfer.js": "^4.6.0",
     "yup": "^0.29.3"
   },
   "devDependencies": {

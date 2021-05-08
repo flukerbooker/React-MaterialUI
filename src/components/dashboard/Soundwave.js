@@ -1,100 +1,296 @@
-import { Bar } from 'react-chartjs-2';
+import React, {
+  useCallback,
+  useRef,
+  useMemo,
+  useState,
+  useEffect
+} from 'react';
+import { WaveSurfer, WaveForm } from 'wavesurfer-react';
+import TimelinePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.min';
+import MarkersPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.markers.min';
 import {
   Box,
   Card,
   CardContent,
   CardHeader,
   Divider,
-  useTheme,
-  colors
+  IconButton
 } from '@material-ui/core';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import ZoomInIcon from '@material-ui/icons/ZoomIn';
+import ZoomOutIcon from '@material-ui/icons/ZoomOut';
 
 const Soundwave = (props) => {
-  const theme = useTheme();
+  const wavesurferRef = useRef();
 
-  const data = {
-    datasets: [
+  const initialZoom = 0;
+  const [zoom, setZoom] = useState(initialZoom);
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const zoomIn = () => {
+    setZoom((prevZoom) => prevZoom + 5);
+  };
+
+  const zoomOut = () => {
+    setZoom((prevZoom) => prevZoom - 5);
+  };
+
+  useEffect(() => {
+    wavesurferRef.current.zoom(zoom);
+  });
+
+  const skipForward = () => {
+    wavesurferRef.current.skipForward(5);
+  };
+
+  const skipBackward = () => {
+    wavesurferRef.current.skipBackward(5);
+  };
+
+  const timeIntervalHandler = () => {
+    let audioLengthInSecond = wavesurferRef.current.getDuration();
+    let audioLengthInMinute = audioLengthInSecond / 60;
+    return audioLengthInMinute;
+  };
+
+  const plugins = useMemo(() => {
+    return [
       {
-        backgroundColor: colors.indigo[500],
-        data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year'
+        plugin: TimelinePlugin,
+        options: {
+          container: '#timeline',
+          timeInterval: timeIntervalHandler,
+          fontSize: 11
+        }
       },
       {
-        backgroundColor: colors.grey[200],
-        data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year'
+        plugin: MarkersPlugin,
+        options: {
+          markers: [
+            {
+              time: 3.74,
+              label: 'h1',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 11.73,
+              label: 'h2',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 20.28,
+              label: 'h3',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 25.51,
+              label: 'h4',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 29.18,
+              label: 'h5',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 34.43,
+              label: 'h6',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 38.61,
+              label: 'h7',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 46.95,
+              label: 'h8',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 63.67,
+              label: 'h9',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 82.36,
+              label: 'h10',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 85.77,
+              label: 'h11',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 90.38,
+              label: 'h12',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 103.23,
+              label: 'h13',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 105.73,
+              label: 'h14',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 106.26,
+              label: 'h15',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 115.73,
+              label: 'h16',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 117.55,
+              label: 'h17',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 120.76,
+              label: 'h18',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 125.41,
+              label: 'h19',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 131.27,
+              label: 'h20',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 133.21,
+              label: 'h21',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 138.31,
+              label: 'h22',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 143.09,
+              label: 'h23',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 230.14,
+              label: 'h24',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 232.36,
+              label: 'h25',
+              color: '#00ffcc',
+              position: 'top'
+            },
+            {
+              time: 238.33,
+              label: 'h26',
+              color: '#00ffcc',
+              position: 'top'
+            }
+          ]
+        }
       }
-    ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
-  };
+    ].filter(Boolean);
+  }, []);
 
-  const options = {
-    animation: false,
-    cornerRadius: 20,
-    layout: { padding: 0 },
-    legend: { display: false },
-    maintainAspectRatio: false,
-    responsive: true,
-    scales: {
-      xAxes: [
-        {
-          barThickness: 12,
-          maxBarThickness: 10,
-          barPercentage: 0.5,
-          categoryPercentage: 0.5,
-          ticks: {
-            fontColor: theme.palette.text.secondary
-          },
-          gridLines: {
-            display: false,
-            drawBorder: false
-          }
-        }
-      ],
-      yAxes: [
-        {
-          ticks: {
-            fontColor: theme.palette.text.secondary,
-            beginAtZero: true,
-            min: 0
-          },
-          gridLines: {
-            borderDash: [2],
-            borderDashOffset: [2],
-            color: theme.palette.divider,
-            drawBorder: false,
-            zeroLineBorderDash: [2],
-            zeroLineBorderDashOffset: [2],
-            zeroLineColor: theme.palette.divider
-          }
-        }
-      ]
-    },
-    tooltips: {
-      backgroundColor: theme.palette.background.paper,
-      bodyFontColor: theme.palette.text.secondary,
-      borderColor: theme.palette.divider,
-      borderWidth: 1,
-      enabled: true,
-      footerFontColor: theme.palette.text.secondary,
-      intersect: false,
-      mode: 'index',
-      titleFontColor: theme.palette.text.primary
+  const handleWSMount = useCallback((waveSurfer) => {
+    wavesurferRef.current = waveSurfer;
+    if (wavesurferRef.current) {
+      wavesurferRef.current.load('/MalcolmGladwell_success_1st_4mins.flac');
+      if (window) {
+        window.surferidze = wavesurferRef.current;
+      }
     }
-  };
+  }, []);
+
+  const togglePlayPause = useCallback(() => {
+    wavesurferRef.current.playPause();
+    setIsPlaying(!isPlaying);
+  }, [isPlaying]);
 
   return (
     <Card {...props}>
-      <CardHeader title="Soundwave" />
+      <Box display="flex" justifyContent="space-between">
+        <CardHeader title="Soundwave Analysis" />
+        <Box p={1}>
+          <IconButton onClick={zoomIn}>
+            <ZoomInIcon />
+          </IconButton>
+          <IconButton onClick={zoomOut} disabled={!zoom}>
+            <ZoomOutIcon />
+          </IconButton>
+        </Box>
+      </Box>
       <Divider />
       <CardContent>
         <Box
           sx={{
-            height: 420,
-            position: 'relative'
+            height: 420
           }}
         >
-          <Bar data={data} options={options} />
+          <WaveSurfer plugins={plugins} onMount={handleWSMount}>
+            <WaveForm
+              id="waveform"
+              height={330}
+              barWidth={3}
+              waveColor="#c6c6c6"
+              progressColor="#3f51b5"
+            ></WaveForm>
+            <Box id="timeline" />
+          </WaveSurfer>
+          <Box display="flex" justifyContent="center" p={2}>
+            <Box>
+              <IconButton onClick={skipBackward} disabled={!skipBackward}>
+                <SkipPreviousIcon />
+              </IconButton>
+              <IconButton onClick={togglePlayPause}>
+                {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+              </IconButton>
+              <IconButton onClick={skipForward}>
+                <SkipNextIcon />
+              </IconButton>
+            </Box>
+          </Box>
         </Box>
       </CardContent>
     </Card>
