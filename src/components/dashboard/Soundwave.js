@@ -7,8 +7,8 @@ import React, {
 } from 'react';
 import { WaveSurfer, WaveForm, Region } from 'wavesurfer-react';
 import TimelinePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.min';
-import MarkersPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.markers.min';
 import RegionsPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min';
+import regionItem from '../../__mocks__/regions';
 import {
   Box,
   Card,
@@ -58,52 +58,7 @@ const Soundwave = (props) => {
     return audioLengthInMinute;
   };
 
-  const [regions, setRegions] = useState([
-    {
-      id: 'region-1',
-      start: 3.74,
-      end: 46.95,
-      color: 'rgba(255, 68, 68, .5)',
-      drag: false,
-      resize: false,
-      data: {
-        systemRegionId: 31
-      }
-    },
-    {
-      id: 'region-2',
-      start: 82.36,
-      end: 90.38,
-      color: 'rgba(255, 187, 51, .5)',
-      drag: false,
-      resize: false,
-      data: {
-        systemRegionId: 32
-      }
-    },
-    {
-      id: 'region-3',
-      start: 103.23,
-      end: 143.09,
-      color: 'rgba(255, 68, 68, .5)',
-      drag: false,
-      resize: false,
-      data: {
-        systemRegionId: 33
-      }
-    },
-    {
-      id: 'region-4',
-      start: 230.14,
-      end: 238.33,
-      color: 'rgba(255, 187, 51, .5)',
-      drag: false,
-      resize: false,
-      data: {
-        systemRegionId: 34
-      }
-    }
-  ]);
+  const [regions, setRegions] = useState(regionItem);
 
   const regionsRef = useRef(regions);
 
@@ -137,169 +92,6 @@ const Soundwave = (props) => {
       {
         plugin: RegionsPlugin,
         options: { dragSelection: false }
-      },
-      {
-        plugin: MarkersPlugin,
-        options: {
-          markers: [
-            // {
-            //   time: 3.74,
-            //   label: 'h1',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 11.73,
-            //   label: 'h2',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 20.28,
-            //   label: 'h3',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 25.51,
-            //   label: 'h4',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 29.18,
-            //   label: 'h5',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 34.43,
-            //   label: 'h6',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 38.61,
-            //   label: 'h7',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 46.95,
-            //   label: 'h8',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 63.67,
-            //   label: 'h9',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 82.36,
-            //   label: 'h10',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 85.77,
-            //   label: 'h11',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 90.38,
-            //   label: 'h12',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 103.23,
-            //   label: 'h13',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 105.73,
-            //   label: 'h14',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 106.26,
-            //   label: 'h15',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 115.73,
-            //   label: 'h16',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 117.55,
-            //   label: 'h17',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 120.76,
-            //   label: 'h18',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 125.41,
-            //   label: 'h19',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 131.27,
-            //   label: 'h20',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 133.21,
-            //   label: 'h21',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 138.31,
-            //   label: 'h22',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 143.09,
-            //   label: 'h23',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 230.14,
-            //   label: 'h24',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 232.36,
-            //   label: 'h25',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // },
-            // {
-            //   time: 238.33,
-            //   label: 'h26',
-            //   color: '#00ffcc',
-            //   position: 'top'
-            // }
-          ]
-        }
       }
     ].filter(Boolean);
   }, []);
