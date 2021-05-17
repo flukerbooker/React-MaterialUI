@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 import { Box, Container, Grid } from '@material-ui/core';
 import LatestOrders from 'src/components/dashboard/LatestOrders';
 import LatestProducts from 'src/components/dashboard/LatestProducts';
-import TrafficByDevice from 'src/components/dashboard/TrafficByDevice';
+import SoundDetail from 'src/components/dashboard/SoundDetail';
 import Soundwave from 'src/components/dashboard/Soundwave';
 
 const Dashboard = () => (
@@ -23,7 +23,7 @@ const Dashboard = () => (
             <Soundwave />
           </Grid>
           <Grid item lg={4} md={6} xl={3} xs={12}>
-            <TrafficByDevice sx={{ height: '100%' }} />
+            <SoundDetail sx={{ height: '100%' }} />
           </Grid>
           <Grid item lg={4} md={6} xl={3} xs={12}>
             <LatestProducts sx={{ height: '100%' }} />
