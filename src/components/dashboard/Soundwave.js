@@ -51,11 +51,27 @@ const Soundwave = (props) => {
     wavesurferRef.current.skipBackward(5);
   };
 
-  const timeIntervalHandler = () => {
-    let audioLengthInSecond = wavesurferRef.current.getDuration();
-    let audioLengthInMinute = audioLengthInSecond / 60;
-    return audioLengthInMinute;
-  };
+  const timeIntervalHandler = useCallback((pxPerSec) => {
+    let chunkInterval;
+    if (pxPerSec >= 25 * 100) {
+      chunkInterval = 0.01;
+    } else if (pxPerSec >= 25 * 40) {
+      chunkInterval = 0.025;
+    } else if (pxPerSec >= 25 * 10) {
+      chunkInterval = 0.1;
+    } else if (pxPerSec >= 25 * 4) {
+      chunkInterval = 0.25;
+    } else if (pxPerSec >= 25) {
+      chunkInterval = 1;
+    } else if (pxPerSec * 5 >= 25) {
+      chunkInterval = 5;
+    } else if (pxPerSec * 15 >= 25) {
+      chunkInterval = 15;
+    } else {
+      chunkInterval = Math.ceil(0.5 / pxPerSec) * 120;
+    }
+    return chunkInterval;
+  }, []);
 
   const [regions, setRegions] = useState([
     {
@@ -138,7 +154,7 @@ const Soundwave = (props) => {
         options: { dragSelection: false }
       }
     ].filter(Boolean);
-  }, []);
+  }, [timeIntervalHandler]);
 
   const handleWSMount = useCallback(
     (waveSurfer) => {
