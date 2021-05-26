@@ -74,6 +74,7 @@ const Soundwave = (props) => {
   }, []);
 
   const [regions, setRegions] = useState([
+    //Malcomm
     {
       id: 'region-1',
       start: 3.74,
@@ -118,6 +119,18 @@ const Soundwave = (props) => {
         systemRegionId: 34
       }
     }
+    //Bill
+    // {
+    //   id: 'region-1',
+    //   start: 234.48,
+    //   end: 237.67,
+    //   color: 'rgba(255, 187, 51, .5)',
+    //   drag: false,
+    //   resize: false,
+    //   data: {
+    //     systemRegionId: 31
+    //   }
+    // }
   ]);
 
   const regionsRef = useRef(regions);
@@ -180,7 +193,7 @@ const Soundwave = (props) => {
   return (
     <Card {...props}>
       <Box display="flex" justifyContent="space-between">
-        <CardHeader title="Soundwave Analysis" />
+        <CardHeader title="Soundwave Visualiztion" />
         <Box p={1}>
           <IconButton onClick={zoomIn}>
             <ZoomInIcon />

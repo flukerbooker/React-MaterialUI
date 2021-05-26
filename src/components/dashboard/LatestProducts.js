@@ -57,10 +57,7 @@ const LatestProducts = (props) => (
     <Divider />
     <List>
       {products.map((product, i) => (
-        <ListItem
-          divider={i < products.length - 1}
-          key={product.id}
-        >
+        <ListItem divider={i < products.length - 1} key={product.id}>
           <ListItemAvatar>
             <img
               alt={product.name}
@@ -75,10 +72,7 @@ const LatestProducts = (props) => (
             primary={product.name}
             secondary={`Updated ${product.updatedAt.fromNow()}`}
           />
-          <IconButton
-            edge="end"
-            size="small"
-          >
+          <IconButton edge="end" size="small">
             <MoreVertIcon />
           </IconButton>
         </ListItem>
