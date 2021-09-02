@@ -1,7 +1,5 @@
 {
   "name": "react-material-dashboard",
-  "author": "DeviasIO",
-  "licence": "MIT",
   "version": "1.0.0",
   "private": false,
   "scripts": {
@@ -50,6 +48,8 @@
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "^4.0.0",
+    "react-string-replace": "^0.4.4",
+    "recharts": "^2.1.1",
     "uuid": "^8.3.0",
     "wavesurfer-react": "^2.0.7",
     "wavesurfer.js": "^4.6.0",

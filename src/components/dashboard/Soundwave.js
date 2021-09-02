@@ -193,7 +193,10 @@ const Soundwave = (props) => {
   return (
     <Card {...props}>
       <Box display="flex" justifyContent="space-between">
-        <CardHeader title="Soundwave Visualiztion" />
+        <CardHeader
+          title="Soundwave Visualization"
+          subheader="Tone of voice from your rehearsal"
+        />
         <Box p={1}>
           <IconButton onClick={zoomIn}>
             <ZoomInIcon />
